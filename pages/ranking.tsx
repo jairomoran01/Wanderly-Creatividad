@@ -14,7 +14,7 @@ const rankingData = [
 ]
 
 export default function Ranking() {
-  const [personalProgress, setPersonalProgress] = useState({
+  const [personalProgress ] = useState({
     rank: 3,
     points: 1200,
     totalDestinations: 15,

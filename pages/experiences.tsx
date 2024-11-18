@@ -4,17 +4,23 @@ import Link from 'next/link'
 import { ChevronLeft, MapPin } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 
+interface Destination {
+  id: number
+  name: string
+  lat: number
+  lng: number
+}
 // Simulación de datos de destinos
-const destinations = [
+const destinations: Destination[] = [
   { id: 1, name: 'París', lat: 48.8566, lng: 2.3522 },
   { id: 2, name: 'Roma', lat: 41.9028, lng: 12.4964 },
   { id: 3, name: 'Barcelona', lat: 41.3851, lng: 2.1734 },
 ]
 
 export default function InteractiveMap() {
-  const [selectedDestination, setSelectedDestination] = useState(null)
+  const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null)
 
-  const handlePinClick = (destination) => {
+  const handlePinClick = (destination: Destination) => {
     setSelectedDestination(destination)
   }
 

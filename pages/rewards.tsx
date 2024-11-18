@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export default function Rewards() {
   const [points, setPoints] = useState(1000)
-  const [rewards, setRewards] = useState([
+  const [rewards] = useState([
     { id: 1, name: 'Descuento 10%', cost: 500 },
     { id: 2, name: 'Viaje gratis', cost: 1000 },
     { id: 3, name: 'Experiencia VIP', cost: 1500 },
