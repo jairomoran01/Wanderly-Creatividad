@@ -2,12 +2,12 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Bell, MessageCircle, User, Map, Award } from 'lucide-react'
+import { Bell, LogOut, MessageCircle, User, Map, Award } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 
 export default function Dashboard() {
   const router = useRouter()
-  const [userName, setUserName] = useState('Usuario') // En un escenario real, esto vendría del backend
+  const [userName] = useState('Usuario') // En un escenario real, esto vendría del backend
 
   const handleLogout = () => {
     // Simular cierre de sesión
@@ -33,15 +33,26 @@ export default function Dashboard() {
             <div className="rounded-[2rem] overflow-hidden w-full h-full bg-white dark:bg-gray-900">
               <div className="flex flex-col h-full">
                 <header className="flex items-center justify-between p-4 bg-blue-600 text-white">
+                <div className="flex items-center">
+                <Link href="/notifications"> {/* Enlace a notificaciones */}
                   <h1 className="text-xl font-bold">Wanderly</h1>
-                  <Button variant="ghost" size="icon" onClick={handleLogout}>
+                  <Button variant="ghost" size="icon">
                     <Bell className="h-6 w-6" />
                   </Button>
+                  </Link>
+                  <Button variant="ghost" size="icon" onClick={handleLogout}> {/* Botón de cierre de sesión */}
+                      <LogOut className="h-6 w-6" />
+                    </Button>
+                  </div>
                 </header>
                 <nav className="flex justify-around p-2 bg-blue-500 text-white">
                   <Button variant="ghost" size="sm" className="text-white">Inicio</Button>
+                  <Link href="/experiences">
                   <Button variant="ghost" size="sm" className="text-white">Experiencias</Button>
-                  <Button variant="ghost" size="sm" className="text-white">Rangos</Button>
+                  </Link>
+                  <Link href="/ranking"> {/* Enlace a ranking */}
+                    <Button variant="ghost" size="sm" className="text-white">Rangos</Button>
+                  </Link>
                 </nav>
                 <main className="flex-1 overflow-y-auto p-4">
                   <section className="mb-6">
