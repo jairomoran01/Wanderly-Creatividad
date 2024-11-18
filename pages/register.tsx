@@ -1,33 +1,40 @@
 import { useState } from 'react'
+import Head from 'next/head'
+import Link from 'next/link'
 import { ChevronLeft, User, Mail, Lock } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import Link from 'next/link'
 
 export default function Register() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleRegister = (e: React.FormEvent) => {
     e.preventDefault()
     // Aquí iría la lógica de registro
-    console.log('Registro con:', name, email, password)
+    console.log('Registrando usuario:', { name, email, password })
     // Simular registro exitoso
-    alert('Registro exitoso!')
+    alert('Registro exitoso! Por favor, inicia sesión.')
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-      <div className="w-full max-w-md">
-        <div className="relative border-gray-800 dark:border-gray-700 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl">
-          <div className="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
-          <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
-          <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
-          <div className="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
-          <div className="rounded-[2rem] overflow-hidden w-full h-full bg-white dark:bg-gray-900">
-            <div className="flex flex-col h-full">
-              <div className="flex-1 overflow-y-auto">
+    <>
+      <Head>
+        <title>Wanderly - Registro</title>
+        <meta name="description" content="Regístrate en Wanderly - Tu compañero de viajes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+        <div className="w-full max-w-md">
+          <div className="relative border-gray-800 dark:border-gray-700 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl">
+            <div className="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
+            <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
+            <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
+            <div className="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
+            <div className="rounded-[2rem] overflow-hidden w-full h-full bg-white dark:bg-gray-900">
+              <div className="flex flex-col h-full">
                 <header className="flex items-center justify-between p-4 bg-blue-600 text-white">
                   <Link href="/">
                     <Button variant="ghost" size="icon">
@@ -37,9 +44,9 @@ export default function Register() {
                   <h1 className="text-xl font-bold">Wanderly</h1>
                   <div className="w-6"></div>
                 </header>
-                <main className="p-4">
+                <main className="flex-1 overflow-y-auto p-4">
                   <h2 className="text-2xl font-bold text-center mb-6">Crear Cuenta</h2>
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleRegister} className="space-y-4">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                         Nombre
@@ -102,14 +109,14 @@ export default function Register() {
                     </Link>
                   </div>
                 </main>
+                <footer className="p-4 text-center text-xs text-gray-500 bg-gray-100 dark:bg-gray-800">
+                  © 2024 Wanderly. Todos los derechos reservados.
+                </footer>
               </div>
-              <footer className="p-4 text-center text-xs text-gray-500 bg-gray-100 dark:bg-gray-800">
-                © 2024 Wanderly. Todos los derechos reservados.
-              </footer>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
